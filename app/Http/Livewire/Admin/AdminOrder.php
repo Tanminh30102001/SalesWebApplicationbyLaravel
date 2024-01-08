@@ -21,7 +21,7 @@ class AdminOrder extends Component
     }
     public function render()
     {
-        $orders=Order::orderBy('total','DESC')->paginate(10);
+        $orders=Order::orderBy('created_at','DESC')->paginate(10);
         return view('livewire.admin.admin-order',['orders'=>$orders]);
     }
 }

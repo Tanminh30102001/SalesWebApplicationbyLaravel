@@ -9,6 +9,7 @@ use Livewire\WithPagination;
 class AdminProductComponent extends Component
 {
     use WithPagination;
+    public $searchTerm = '';
     public $product_id;
     public function deleteProduct(){
         // Product::find($this->product_id)->delete();
@@ -20,7 +21,12 @@ class AdminProductComponent extends Component
     }
     public function render()
     {
-        $products=Product::orderBy('created_at','ASC')->paginate(10);
+        $search='%'.$this->searchTerm.'%';
+        $products=Product::where('name','LIKE',$search)->
+        orWhere('regular_price','like' ,$search)->
+        orWhere('sale_price','like' ,$search)->
+        orWhere('quantity','like' ,$search)->
+        orderBy('id','ASC')->paginate(10);
 
         return view('livewire.admin.admin-product-component',['products'=>$products]);
     }

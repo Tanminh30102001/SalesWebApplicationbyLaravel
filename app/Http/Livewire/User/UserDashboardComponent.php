@@ -12,6 +12,7 @@ class UserDashboardComponent extends Component
     public $name;
     public $phone;
     public $address;
+    public $order_id;
     // public $user_id;
 
     public function mount(){
@@ -22,6 +23,7 @@ class UserDashboardComponent extends Component
         $this->name =$user->name;
         $this->phone =$user->phone;
         $this->address=$user->address;
+        
         
     }
     public function updateUser(){

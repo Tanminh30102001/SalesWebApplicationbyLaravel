@@ -1,17 +1,19 @@
 <div>
-    <style>
+<style>
         nav svg{
             height: 20px;
         }
         nav .hidden{
             display: block;
         }
-        </style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&display=swap');
+
+</style>
     <main class="main">
         <div class="page-header breadcrumb-wrap">
             <div class="container">
                 <div class="breadcrumb">
-                    <a href="index.html" rel="nofollow">Home</a>
+                    <a href="/" rel="nofollow">Home</a>
                     <span></span> All Order
                   
                 </div>
@@ -24,11 +26,10 @@
                         <div class="card-header">
                             <div class="row">
                                 <div class="col-md-6">All Order</div>
-                                <div class="col-md-6">                      
-                                </div>
+                               
                             </div>
                         </div>
-                            <div class="card-body">
+                            <div class="row">
                                 @if(Session::has('message') )
                                 <div class="alert alert-success" role="alert"> {{Session::get('message')}}</div>
                                 @endif
@@ -56,6 +57,7 @@
                                         </tbody>
                                     </table>
                                 </div>
+
                                 {{$orders->links()}}
                             </div>
                     </div>
@@ -63,6 +65,7 @@
             </div>
         </section>
     </main>
+    
 </div>
 
 

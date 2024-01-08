@@ -4233,19 +4233,20 @@ table .product-thumbnail img {
 }
 
 .product-rate {
-  
+  /* background-image: url("../imgs/theme/rating-stars.png"); */
   background-position: 0 -12px;
   background-repeat: repeat-x;
   height: 12px;
-  width: 80px;
+  width: 100px;
   transition: all 0.5s ease-out 0s;
   -webkit-transition: all 0.5s ease-out 0s;
 }
 
 .product-rating {
   height: 12px;
+
   background-repeat: repeat-x;
-  
+  /* background-image: url("../imgs/theme/rating-stars.png"); */
   background-position: 0 0;
 }
 
@@ -4466,34 +4467,43 @@ table .product-thumbnail img {
   border: 0;
 }
 
-.product-color-red {
+.product-color-Red {
   background: #ff596d;
 }
 
-.product-color-yellow {
+.product-color-Yellow {
   background: #ffdb33;
 }
 
-.product-color-white {
-  background: #ffffff;
+.product-color-White {
+  border: 1px;
+  background: #f8f4f4;
 }
 
-.product-color-orange {
+.product-color-Orange {
   background: #ffbb51;
 }
 
-.product-color-cyan {
+.product-color-Cyan {
   background: #80e6ff;
 }
 
-.product-color-green {
+.product-color-Green {
   background: #38cf46;
 }
 
-.product-color-purple {
+.product-color-Purple {
   background: #ff8ff8;
 }
-
+.product-color-Black {
+  background: #000;
+}
+.product-color-Gray {
+  background: #808080;
+}
+.product-color-Blue {
+  background: #6f4fec;
+}
 .detail-gallery .slick-slider {
   background-color: #000;
   margin-bottom: 30px;
@@ -7188,13 +7198,13 @@ span.fi-rs-apps {
 }
 
 .categori-dropdown-wrap ul li {
-  display: block;
+  display:block;
 }
 
 .categori-dropdown-wrap ul li a {
   display: -webkit-box;
   display: -ms-flexbox;
-  display: flex;
+  display: inline-block;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
@@ -7242,7 +7252,7 @@ span.fi-rs-apps {
   margin: 0;
   margin-top: 0px;
   border: 1px solid #eef0ee;
-  min-width: 800px;
+  width:400px;
   width: 100%;
   right: 0;
   border-radius: 0;

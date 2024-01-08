@@ -23,8 +23,9 @@
                     <div class="col-12">
                         <div class="card-header">
                             <div class="row">
-                                <div class="col-md-6">All Product</div>
-                                <div class="col-md-6">
+                                <div class="col-md-4">All Product</div>
+                                <div class="col-md-4">   <input type="text"  class="form-control" placeholder="Input name,price,quanity to search..."wire:model="searchTerm"/> </div>
+                                <div class="col-md-4">
                                     <a href="{{route('admin.product.add')}}" class="btn btn-succsess float-end">Add new Product </a>
                                 </div>
                             </div>

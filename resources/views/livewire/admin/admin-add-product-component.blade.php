@@ -115,15 +115,26 @@
                                         <input type="file" name="image" class="form-control" wire:model="image"/>
                                         @if ($image)
                                         <img src="{{$image->temporaryUrl()}}" width="120"/>
-                                            
                                         @endif
                                         @error('image')
                                         <p class="text-danger">{{$message}} </p>
                                         @enderror
                                     </div>
                                     <div class="mb-3 mt-3">
+                                        <label for="image" class="form-label"> Gallery</label>
+                                        <input type="file" name="image" class="form-control" wire:model="images" multiple/>
+                                        @if ($images)
+                                        @foreach($images as $image)
+                                        <img src="{{$image->temporaryUrl()}}" width="120"/> 
+                                        @endforeach
+                                        @endif
+                                        @error('images')
+                                        <p class="text-danger">{{$message}} </p>
+                                        @enderror
+                                    </div>
+                                    <div class="mb-3 mt-3">
                                         <label for="category_id" class="form-label" > Category</label>
-                                        <select class="form-control" name="category_id" wire:model="category_id">
+                                        <select class="form-control" name="category_id" wire:model="category_id" wire:change="changeSubcategory">
                                             <option value="">Select Category</option>  
                                             @foreach ($categories as $category)
                                                 <option value="{{$category->id}}">{{$category->name}}</option>
@@ -133,7 +144,41 @@
                                         <p class="text-danger">{{$message}} </p>
                                         @enderror
                                     </div>
-                                    <button type="submit" class="btn btn-primary float-end"> submit</button>
+                                    <div class="mb-3 mt-3">
+                                        <label for="subcategory_id" class="form-label" >Sub Category</label>
+                                        <select class="form-control" name="subcategory_id" wire:model="subcategory_id">
+                                            <option value="">None</option>  
+                                            @foreach ($subcategories as $subcategory)
+                                                <option value="{{$subcategory->id}}">{{$subcategory->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                            <div class="mb-2 mt-2">
+                                                <label for="subcategory_id" class="form-label" >Product Attributes</label>
+                                                <div class="row"> 
+                                                    <div class="col-lg-11">
+                                                        <select class="form-control" name="subcategory_id" wire:model="attr">
+                                                            <option value="">None</option>  
+                                                            @foreach ($pattributes as $pattribute)
+                                                                <option value="{{$pattribute->id}}">{{$pattribute->name}}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-lg-1"> <button class="btn btn-danger float-end" wire:click.prevent="addAttr"> Add</button></div>
+                                                </div>
+                                            </div>
+                                            @foreach($inputs as $key=>$value)
+                                            <div class="mb-3 mt-3">
+                                                <label class="form-label"> {{$pattributes->where('id',$attr_array[$key])->first()->name}}</label>
+                                                <div class="row"> 
+                                                    <div class="col-lg-10">
+                                                        <input type="text" class="form-control" placeholder="{{$pattributes->where('id',$attr_array[$key])->first()->name}}"wire:model="attr_values.{{$value}}"/> 
+                                                    </div>
+                                                    <div class="col-lg-2"><button class="btn btn-danger float-end" wire:click.prevent="remove({{$key}})"> Remove</button></div>
+                                                </div>
+                                            </div>
+                                            @endforeach
+                                    <button type="submit" class="btn btn-primary "> submit</button>
                                 </form>
                             </div>
                     </div>

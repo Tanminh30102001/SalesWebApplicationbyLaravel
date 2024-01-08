@@ -15,4 +15,10 @@ class Product extends Model
     public function orderDetails(){
         return $this->hasMany(OrderDetails::class,'product_id');
     }
+    public function subCategories(){
+        return $this->belongsTo(Subcategory::class,'subcategory_id');
+    }
+    public function attributeValues(){
+        return $this->hasMany(AttributeValue::class,'product_id');
+    }
 }

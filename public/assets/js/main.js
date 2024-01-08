@@ -45,8 +45,8 @@
         $("#slider-range").slider({
             range: true,
             min: 0,
-            max: 500,
-            values: [130, 250],
+            max: 5000000,
+            values: [130000, 250000],
             slide: function (event, ui) {
                 $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
             }

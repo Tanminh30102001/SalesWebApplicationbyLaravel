@@ -1,12 +1,4 @@
 <div>
-    <style>
-        nav svg{
-            height: 20px;
-        }
-        nav .hidden{
-            display: block;
-        }
-        </style>
     <main class="main">
         <div class="page-header breadcrumb-wrap">
             <div class="container">
@@ -67,6 +59,15 @@
                                         @error('is_popular')
                                         <p class="text-danger">{{$message}} </p>
                                         @enderror
+                                    </div>
+                                    <div class="mb-3 mt-3">
+                                        <label for="category_id" class="form-label"> Parent category</label>
+                                        <select class="form-control"name="category_id"wire:model="category_id" >
+                                                <option value="">None</option>
+                                                @foreach ($categories as $item)
+                                                <option value="{{$item->id}}">{{$item->name}}</option>
+                                                @endforeach
+                                        </select>
                                     </div>
                                     <button type="submit" class="btn btn-primary float-end"> submit</button>
                                 </form>

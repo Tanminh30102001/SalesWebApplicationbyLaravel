@@ -3,7 +3,7 @@
 
     <head>
         <meta charset="utf-8">
-    <title>Surfside Media</title>
+    <title>TM Fashion Store</title>
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,8 +12,11 @@
     <meta property="og:url" content="">
     <meta property="og:image" content="">
     <link rel='stylesheet prefetch' href='https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css'>
-
-    <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/imgs/theme/favicon.ico')}}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.1/mdb.min.css"  rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/imgs/logo/logoTM.png')}}">
     <link rel="stylesheet" href="{{asset('assets/css/main.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/custom.css')}}">
     @livewireStyles
@@ -26,25 +29,28 @@
                     <div class="row align-items-center">
                         <div class="col-xl-3 col-lg-4">
                             <div class="header-info">
-                            <ul>
+                                
+                            {{-- <ul>
                                     <li>
-                                        <a class="language-dropdown-active" href="#"> <i class="fi-rs-world"></i> English <i class="fi-rs-angle-small-down"></i></a>
+                                        <a class="language-dropdown-active" href="#"> <i class="fi-rs-world"></i> {{__('Select Language')}} <i class="fi-rs-angle-small-down"></i></a>
                                         <ul class="language-dropdown">
-                                            <li><a href="#"><img src="assets/imgs/theme/flag-fr.png" alt="">Français</a></li>
-                                            <li><a href="#"><img src="assets/imgs/theme/flag-dt.png" alt="">Deutsch</a></li>
-                                            <li><a href="#"><img src="assets/imgs/theme/flag-ru.png" alt="">Pусский</a></li>
+                                            <li><a href="{{route('languages',['locale' => 'vi'])}}"><img src="{{asset('assets/imgs/theme/flag-fr.png')}}" alt="">Vietnam</a></li>
+                                            <li> <a href="{{route('languages',['locale' => 'en'])}}"><img src="{{asset('assets/imgs/theme/flag-ru.png')}}" alt="">English</a></li>
                                         </ul>
                                     </li>                                
-                                </ul>
+                                    <a href="{{route('languages',['locale' => 'vi'])}}">
+                                        <a href="{{route('languages',['locale' => 'en'])}}"> 
+                                </ul> --}}
+                                
                             </div>
                         </div>
                         <div class="col-xl-6 col-lg-4">
                             <div class="text-center">
                                 <div id="news-flash" class="d-inline-block">
                                     <ul>
-                                        <li>Get great devices up to 50% off <a href="shop.html">View details</a></li>
-                                        <li>Supper Value Deals - Save more with coupons</li>
-                                        <li>Trendy 25silver jewelry, save up 35% off today <a href="shop.html">Shop now</a></li>
+                                        <li>{{__('Giảm giá đến 50%')}} <a href="shop.html">{{__('Xem chi tiết')}}</a></li>
+                                        <li>{{__('Siêu Ưu Đãi - Siêu tiết kiệm ')}}</li>
+                                        <li> {{__('Mã giảm giá lên đến 50% cho người m')}}</li>
                                     </ul>
                                 </div>
                             </div>
@@ -56,13 +62,13 @@
                                     <li><i class="fi-rs-user"></i>{{Auth::user()->name}}  /
                                         <form method="POST" action="{{route('logout')}}">
                                         @csrf 
-                                        <a href="{{route('logout')}}" onclick="event.preventDefault(); this.closest('form').submit();">Logout</a> 
+                                        <a href="{{route('logout')}}" onclick="event.preventDefault(); this.closest('form').submit();">{{__('Đăng xuất ')}}</a> 
                                         </form>
                                     </li>
                                 </ul>
                                 @else
                                 <ul>                                
-                                    <li><i class="fi-rs-key"></i><a href="{{route('login')}}">Log In </a>  / <a href="{{route('register')}}">Sign Up</a></li>
+                                    <li><i class="fi-rs-key"></i><a href="{{route('login')}}">{{__('Đăng nhập')}} </a>  / <a href="{{route('register')}}">{{__('Đăng kí')}}</a></li>
                                 </ul>
                                 @endif
                             </div>
@@ -74,7 +80,7 @@
                 <div class="container">
                     <div class="header-wrap">
                         <div class="logo logo-width-1">
-                            <a href="/"><img src="{{asset('assets/imgs/logo/logo.png')}}" alt="logo"></a>
+                            <a href="/"><img src="{{asset('assets/imgs/logo/logoce.png')}}" alt="logo"></a>
                         </div>
                         <div class="header-right">
                             @livewire('header-search-component')
@@ -92,18 +98,42 @@
                 <div class="container">
                     <div class="header-wrap header-space-between position-relative">
                         <div class="logo logo-width-1 d-block d-lg-none">
-                            <a href="/"><img src="{{asset('assets/imgs/logo/logo.png')}}" alt="logo"></a>
+                            <a href="/"><img src="{{asset('assets/imgs/logo/logotmm.png')}}" style="width: 53px;height: 87px;" alt="logo"></a>
                         </div>
                         <div class="header-nav d-none d-lg-flex">
                             <div class="main-categori-wrap d-none d-lg-block">
                                 <a class="categori-button-active" href="#">
-                                    <span class="fi-rs-apps"></span> Browse Categories
+                                    <span class="fi-rs-apps"></span> {{__('Tất cả danh mục')}}
                                 </a>
                                 
                                 <div class="categori-dropdown-wrap categori-dropdown-active-large">
                                     <ul>
                                         @foreach($categories as $category) 
+                                        @if(count($category->subCategories)>0)
+                                        <li class="has-children">
+                                            <a href="{{route('product.category',['slug'=>$category->slug])}}"><i class="surfsidemedia-font-dress"></i>{{$category->name}}</a>
+                                            <div class="dropdown-menu">
+                                                <ul class="mega-menu d-lg-flex">
+                                                    <li class="mega-menu-col col-lg-4">
+                                                        <ul class="d-lg-flex">
+                                                            <li class="mega-menu-col col-lg-6">
+                                                                <ul>
+                                                                    @foreach($category->subCategories as $scategory)
+                                                                    <li><a class="dropdown-item nav-link nav_item" href="{{route('product.category',['slug'=>$category->slug,'scategory_slug'=>$scategory->slug])}}">{{$scategory->name}}</a></li>
+                                                                    @endforeach
+                                                                </ul>
+                                                            </li>
+                                                            
+                                                        </ul>
+                                                    </li>
+                                                   
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        @else
                                         <li><a href="{{route('product.category',['slug'=>$category->slug])}}"><i class="surfsidemedia-font-desktop"></i>{{$category->name}}</a></li>
+                                        @endif
+                                        
                                         @endforeach
                                     </ul>
                                 </div>
@@ -111,84 +141,31 @@
                             <div class="main-menu main-menu-padding-1 main-menu-lh-2 d-none d-lg-block">
                                 <nav>
                                     <ul>
-                                        <li><a class="active" href="/">Home </a></li>
-                                        <li><a href="about.html">About</a></li>
-                                        <li><a href="{{route('shop')}}">Shop</a></li>
-                                        {{-- <li class="position-static"><a href="#">Our Collections <i class="fi-rs-angle-down"></i></a>
-                                            <ul class="mega-menu">
-                                                <li class="sub-mega-menu sub-mega-menu-width-22">
-                                                    <a class="menu-title" href="#">Women's Fashion</a>
-                                                    <ul>
-                                                        <li><a href="product-details.html">Dresses</a></li>
-                                                        <li><a href="product-details.html">Blouses & Shirts</a></li>
-                                                        <li><a href="product-details.html">Hoodies & Sweatshirts</a></li>
-                                                        <li><a href="product-details.html">Wedding Dresses</a></li>
-                                                        <li><a href="product-details.html">Prom Dresses</a></li>
-                                                        <li><a href="product-details.html">Cosplay Costumes</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li class="sub-mega-menu sub-mega-menu-width-22">
-                                                    <a class="menu-title" href="#">Men's Fashion</a>
-                                                    <ul>
-                                                        <li><a href="product-details.html">Jackets</a></li>
-                                                        <li><a href="product-details.html">Casual Faux Leather</a></li>
-                                                        <li><a href="product-details.html">Genuine Leather</a></li>
-                                                        <li><a href="product-details.html">Casual Pants</a></li>
-                                                        <li><a href="product-details.html">Sweatpants</a></li>
-                                                        <li><a href="product-details.html">Harem Pants</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li class="sub-mega-menu sub-mega-menu-width-22">
-                                                    <a class="menu-title" href="#">Technology</a>
-                                                    <ul>
-                                                        <li><a href="product-details.html">Gaming Laptops</a></li>
-                                                        <li><a href="product-details.html">Ultraslim Laptops</a></li>
-                                                        <li><a href="product-details.html">Tablets</a></li>
-                                                        <li><a href="product-details.html">Laptop Accessories</a></li>
-                                                        <li><a href="product-details.html">Tablet Accessories</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li class="sub-mega-menu sub-mega-menu-width-34">
-                                                    <div class="menu-banner-wrap">
-                                                        <a href="product-details.html"><img src="assets/imgs/banner/menu-banner.jpg" alt="Surfside Media"></a>
-                                                        <div class="menu-banner-content">
-                                                            <h4>Hot deals</h4>
-                                                            <h3>Don't miss<br> Trending</h3>
-                                                            <div class="menu-banner-price">
-                                                                <span class="new-price text-success">Save to 50%</span>
-                                                            </div>
-                                                            <div class="menu-banner-btn">
-                                                                <a href="product-details.html">Shop now</a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="menu-banner-discount">
-                                                            <h3>
-                                                                <span>35%</span>
-                                                                off
-                                                            </h3>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </li> --}}
-                                        <li><a href="blog.html">Blog </a></li>                                    
-                                        <li><a href="contact.html">Contact</a></li>
+                                        <li><a class="active" href="/">{{__('Trang chủ')}} </a></li>
+                                        {{-- <li><a href="about.html">{{__('Trang chủ')}} </a></li> --}}
+                                        <li><a href="{{route('shop')}}">{{__('Cửa hàng')}} </a></li>
+                                       
+                                                                          
+                                        <li><a href="{{route('contact-us')}}">{{__('Liên hệ')}} </a></li>
                                         @auth
                                         <li><a href="#">My Account<i class="fi-rs-angle-down"></i></a>
                                             @if(Auth::user()->utype=='ADM')
                                                 <ul class="sub-menu">
-                                                    <li><a href="{{route('admin.dashboard')}}">Dashboard</a></li>
-                                                    <li><a href="{{route('admin.product')}}">Products</a></li>
-                                                    <li><a href="{{route('admin.categories')}}">Categories</a></li>
-                                                    <li><a href="{{route('admin.home.slider')}}">Manage Slider</a> </li>
-                                                    <li><a href="{{route('admin.order')}}">Orders</a></li>
-                                                    <li><a href="#">Customers</a></li>                                       
+                                                    <li><a href="{{route('admin.dashboard')}}">{{__('Trang chủ ADmin')}} </a></li>
+                                                    <li><a href="{{route('admin.product')}}">{{__('Quản lý sản phẩm ')}} </a></li>
+                                                    <li><a href="{{route('admin.categories')}}"> {{__('Quản lý Danh mục ')}} </a></li>
+                                                    <li><a href="{{route('admin.home.slider')}}">{{__('Quản lý banner')}} </a> </li>
+                                                    <li><a href="{{route('admin.order')}}">{{__('Quản lý Đơn hàng ')}} </a></li>
+                                                    <li><a href="{{route('admin.contact')}}">{{__('Quản lý Liên hệ ')}} </a></li>
+                                                    <li><a href="{{route('admin.user')}}" >{{__('Quản lý khách hàng')}} </a></li>   
+                                                    <li><a href="{{route('admin.attribute')}}" >{{__('Quản lý các thuộc tính  sản phẩm ')}} </a></li>   
+                                                    <li><a href="{{route('admin.coupons')}}" >{{__('Quản lý mã giảm giá  ')}} </a></li>                              
                                                 </ul>
                                             @else
                                             <ul class="sub-menu">
-                                                <li><a href="{{route('user.dashboard')}}">Dashboard</a></li>  
-                                                <li><a href="{{route('user.dashboard.edit',['user_id'=>Auth::user()->id])}}">Edit</a></li>   
-                                                <li><a href="{{route('user.order')}}">Order</a></li>   
+                                                
+                                                <li><a href="{{route('user.dashboard.edit',['user_id'=>Auth::user()->id])}}">{{__('Quản lý hồ sơ ')}} </a></li>   
+                                                <li><a href="{{route('user.order')}}">{{__('Quản lý đơn hàng của bạn ')}} </a></li>   
                                                 </ul>
                                             @endif
                                             
@@ -199,23 +176,17 @@
                             </div>
                         </div>
                         <div class="hotline d-none d-lg-block">
-                            <p><i class="fi-rs-smartphone"></i><span>Toll Free</span> (+1) 0000-000-000 </p>
+                            <p><i class="fi-rs-smartphone"></i><span>{{__('Hổ trợ 24/7 ')}} </span>0338386701</p>
                         </div>
                         <p class="mobile-promotion">Happy <span class="text-brand">Mother's Day</span>. Big Sale Up to 40%</p>
                         <div class="header-action-right d-block d-lg-none">
                             <div class="header-action-2">
                                 <div class="header-action-icon-2">
-                                    <a href="shop-wishlist.php">
-                                        <img alt="Surfside Media" src="assets/imgs/theme/icons/icon-heart.svg">
-                                        <span class="pro-count white">4</span>
-                                    </a>
+                                    @livewire('wishlist-icon-component')
                                 </div>
                                 <div class="header-action-icon-2">
-                                    <a class="mini-cart-icon" href="cart.html">
-                                        <img alt="Surfside Media" src="assets/imgs/theme/icons/icon-cart.svg">
-                                        <span class="pro-count white">2</span>
-                                    </a>
-                                    <div class="cart-dropdown-wrap cart-dropdown-hm2">
+                                    @livewire('cart-icon-component')
+                                    {{-- <div class="cart-dropdown-wrap cart-dropdown-hm2">
                                         <ul>
                                             <li>
                                                 <div class="shopping-cart-img">
@@ -251,7 +222,7 @@
                                                 <a href="shop-checkout.php">Checkout</a>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
                                 <div class="header-action-icon-2 d-block d-lg-none">
                                     <div class="burger-icon burger-icon-white">
@@ -281,96 +252,86 @@
                 </div>
                 <div class="mobile-header-content-area">
                     <div class="mobile-search search-style-3 mobile-header-border">
-                        <form action="#">
-                            <input type="text" placeholder="Search for items…">
+                        <form action="{{route('product.search')}}">
+                            <input type="text" name="q" placeholder="Search for items..." >
                             <button type="submit"><i class="fi-rs-search"></i></button>
                         </form>
                     </div>
                     <div class="mobile-menu-wrap mobile-header-border">
                         <div class="main-categori-wrap mobile-header-border">
                             <a class="categori-button-active-2" href="#">
-                                <span class="fi-rs-apps"></span> Browse Categories
+                                <span class="fi-rs-apps"></span> {{__('Tất cả danh mục')}}
                             </a>
                             <div class="categori-dropdown-wrap categori-dropdown-active-small">
-                                <ul>
-                                    <li><a href="shop.html"><i class="surfsidemedia-font-dress"></i>Women's Clothing</a></li>
-                                    <li><a href="shop.html"><i class="surfsidemedia-font-tshirt"></i>Men's Clothing</a></li>
-                                    <li> <a href="shop.html"><i class="surfsidemedia-font-smartphone"></i> Cellphones</a></li>
-                                    <li><a href="shop.html"><i class="surfsidemedia-font-desktop"></i>Computer & Office</a></li>
-                                    <li><a href="shop.html"><i class="surfsidemedia-font-cpu"></i>Consumer Electronics</a></li>
-                                    <li><a href="shop.html"><i class="surfsidemedia-font-home"></i>Home & Garden</a></li>
-                                    <li><a href="shop.html"><i class="surfsidemedia-font-high-heels"></i>Shoes</a></li>
-                                    <li><a href="shop.html"><i class="surfsidemedia-font-teddy-bear"></i>Mother & Kids</a></li>
-                                    <li><a href="shop.html"><i class="surfsidemedia-font-kite"></i>Outdoor fun</a></li>
+                                <ul class="dropdown">
+                                    @foreach($categories as $category)
+                                    @if(count($category->subCategories)>0)
+                                    <ul class="mobile-menu">
+                                        <li class="menu-item-has-children"><span class="menu-expand"></span><a href="{{route('product.category',['slug'=>$category->slug])}}">{{$category->name}}</a>
+                                            <ul class="dropdown">
+                                                @foreach($category->subCategories as $scategory)
+                                                <li class="menu-item-has-children"><span class="menu-expand"></span><a href="{{route('product.category',['slug'=>$category->slug,'scategory_slug'=>$scategory->slug])}}">{{$scategory->name}}</a> </li>
+                                                @endforeach
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                    @else
+                                    <li><a href="{{route('product.category',['slug'=>$category->slug])}}">{{$category->name}}</a></li>
+                                    @endif
+                                    @endforeach
+                                  
                                 </ul>
                             </div>
                         </div>
                         <!-- mobile menu start -->
                         <nav>
                             <ul class="mobile-menu">
-                                <li class="menu-item-has-children"><span class="menu-expand"></span><a href="/">Home</a></li>
-                                <li class="menu-item-has-children"><span class="menu-expand"></span><a href="{{route('shop')}}">shop</a></li>
-                                <li class="menu-item-has-children"><span class="menu-expand"></span><a href="#">Our Collections</a>
-                                    <ul class="dropdown">
-                                        <li class="menu-item-has-children"><span class="menu-expand"></span><a href="#">Women's Fashion</a>
-                                            <ul class="dropdown">
-                                                <li><a href="product-details.html">Dresses</a></li>
-                                                <li><a href="product-details.html">Blouses & Shirts</a></li>
-                                                <li><a href="product-details.html">Hoodies & Sweatshirts</a></li>
-                                                <li><a href="product-details.html">Women's Sets</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="menu-item-has-children"><span class="menu-expand"></span><a href="#">Men's Fashion</a>
-                                            <ul class="dropdown">
-                                                <li><a href="product-details.html">Jackets</a></li>
-                                                <li><a href="product-details.html">Casual Faux Leather</a></li>
-                                                <li><a href="product-details.html">Genuine Leather</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="menu-item-has-children"><span class="menu-expand"></span><a href="#">Technology</a>
-                                            <ul class="dropdown">
-                                                <li><a href="product-details.html">Gaming Laptops</a></li>
-                                                <li><a href="product-details.html">Ultraslim Laptops</a></li>
-                                                <li><a href="product-details.html">Tablets</a></li>
-                                                <li><a href="product-details.html">Laptop Accessories</a></li>
-                                                <li><a href="product-details.html">Tablet Accessories</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
+                                <li class="menu-item-has-children"><span class="menu-expand"></span><a href="{{route('home.index')}}">{{__('Trang chủ')}}</a></li>
+                                <li class="menu-item-has-children"><span class="menu-expand"></span><a href="{{route('shop')}}">{{__('Cửa hàng')}}</a></li>
+                                <li><a href="{{route('contact-us')}}">{{__('Liên hệ')}}</a></li>
+                                <li class="menu-item-has-children"><span class="menu-expand"></span><a href="#">{{__('Tài khoản của tôi')}}</a>
+                                    @if(Auth::user()?->utype=='ADM')
+                                         <ul class="dropdown">
+                                            <li><a href="{{route('admin.dashboard')}}">{{__('Trang chủ ADmin')}} </a></li>
+                                                    <li><a href="{{route('admin.product')}}">{{__('Quản lý sản phẩm ')}} </a></li>
+                                                    <li><a href="{{route('admin.categories')}}"> {{__('Quản lý Danh mục ')}} </a></li>
+                                                    <li><a href="{{route('admin.home.slider')}}">{{__('Quản lý banner')}} </a> </li>
+                                                    <li><a href="{{route('admin.order')}}">{{__('Quản lý Đơn hàng ')}} </a></li>
+                                                    <li><a href="{{route('admin.contact')}}">{{__('Quản lý Liên hệ ')}} </a></li>
+                                                    <li><a href="{{route('admin.user')}}" >{{__('Quản lý khách hàng')}} </a></li>   
+                                                    <li><a href="{{route('admin.attribute')}}" >{{__('Quản lý các thuộc tính  sản phẩm ')}} </a></li>   
+                                                    <li><a href="{{route('admin.coupons')}}" >{{__('Quản lý mã giảm giá  ')}} </a></li>                                
+                                         </ul>
+                                     @else
+                                     <ul class="dropdown">
+                                        @if(Auth::check())
+                                         <li><a href="{{route('user.dashboard.edit',['user_id'=>Auth::user()->id])}}">{{__('Quản lý hồ sơ')}}</a></li>   
+                                        @endif
+                                         <li><a href="{{route('user.order')}}">{{__('Quản lý đơn hàng của bạn')}}</a></li>   
+                                         </ul>
+                                     @endif
                                 </li>
-                                <li class="menu-item-has-children"><span class="menu-expand"></span><a href="blog.html">Blog</a></li>
-                                <li class="menu-item-has-children"><span class="menu-expand"></span><a href="#">Language</a>
-                                    <ul class="dropdown">
-                                        <li><a href="#">English</a></li>
-                                        <li><a href="#">French</a></li>
-                                        <li><a href="#">German</a></li>
-                                        <li><a href="#">Spanish</a></li>
-                                    </ul>
-                                </li>
+                               
                             </ul>
                         </nav>
                         <!-- mobile menu end -->
                     </div>
                     <div class="mobile-header-info-wrap mobile-header-border">
-                        <div class="single-mobile-header-info mt-30">
-                            <a href="contact.html"> Our location </a>
-                        </div>
+                        
                         <div class="single-mobile-header-info">
-                            <a href="login.html">Log In </a>                        
+                            <a href="{{route('login')}}">{{__('Đăng nhập')}} </a>                        
                         </div>
                         <div class="single-mobile-header-info">                        
-                            <a href="register.html">Sign Up</a>
+                            <a href="{{route('register')}}">{{__('Đăng ký')}}</a>
                         </div>
-                        <div class="single-mobile-header-info">
+                        {{-- <div class="single-mobile-header-info">
                             <a href="#">(+1) 0000-000-000 </a>
-                        </div>
+                        </div> --}}
                     </div>
                     <div class="mobile-social-icon">
                         <h5 class="mb-15 text-grey-4">Follow Us</h5>
                         <a href="#"><img src="assets/imgs/theme/icons/icon-facebook.svg" alt=""></a>
-                        <a href="#"><img src="assets/imgs/theme/icons/icon-twitter.svg" alt=""></a>
                         <a href="#"><img src="assets/imgs/theme/icons/icon-instagram.svg" alt=""></a>
-                        <a href="#"><img src="assets/imgs/theme/icons/icon-pinterest.svg" alt=""></a>
                         <a href="#"><img src="assets/imgs/theme/icons/icon-youtube.svg" alt=""></a>
                     </div>
                 </div>
@@ -386,10 +347,10 @@
                             <div class="row align-items-center">
                                 <div class="col flex-horizontal-center">
                                     <img class="icon-email" src="assets/imgs/theme/icons/icon-email.svg" alt="">
-                                    <h4 class="font-size-20 mb-0 ml-3">Sign up to Newsletter</h4>
+                                    <h4 class="font-size-20 mb-0 ml-3">{{__('Đăng ký để nhận được thông tin mới ')}}</h4>
                                 </div>
                                 <div class="col my-4 my-md-0 des">
-                                    <h5 class="font-size-15 ml-4 mb-0">...and receive <strong>$25 coupon for first shopping.</strong></h5>
+                                    <h5 class="font-size-15 ml-4 mb-0">...{{__('và nhận được ')}} <strong>{{__('Mã giảm giá lên đến 50%')}}</strong></h5>
                                 </div>
                             </div>
                         </div>
@@ -397,7 +358,7 @@
                             <!-- Subscribe Form -->
                             <form class="form-subcriber d-flex wow fadeIn animated">
                                 <input type="email" class="form-control bg-white font-small" placeholder="Enter your email">
-                                <button class="btn bg-dark text-white" type="submit">Subscribe</button>
+                                <button class="btn bg-dark text-white" type="submit">{{__('Đăng kí')}}</button>
                             </form>
                             <!-- End Subscribe Form -->
                         </div>
@@ -409,63 +370,62 @@
                     <div class="row">
                         <div class="col-lg-4 col-md-6">
                             <div class="widget-about font-md mb-md-5 mb-lg-0">
-                                <div class="logo logo-width-1 wow fadeIn animated">
-                                    <a href="index.html"><img src="assets/imgs/logo/logo.png" alt="logo"></a>
-                                </div>
-                                <h5 class="mt-20 mb-10 fw-600 text-grey-4 wow fadeIn animated">Contact</h5>
+                                <h5 class="mt-20 mb-10 fw-600 text-grey-4 wow fadeIn animated">{{__('Liên hệ')}}</h5>
                                 <p class="wow fadeIn animated">
-                                    <strong>Address: </strong>562 Wellington Road
+                                    <strong>{{__('Đia chỉ')}}: </strong>180 Cao Lo, Ward4, District 8, HoChiMinh City
                                 </p>
                                 <p class="wow fadeIn animated">
-                                    <strong>Phone: </strong>+1 0000-000-000
+                                    <strong>{{__('SĐT')}}: </strong>+84 338386701
                                 </p>
                                 <p class="wow fadeIn animated">
-                                    <strong>Email: </strong>contact@surfsidemedia.in
+                                    <strong>Email: </strong>tanminh.tn30102001@gmail.com
                                 </p>
-                                <h5 class="mb-10 mt-30 fw-600 text-grey-4 wow fadeIn animated">Follow Us</h5>
+                                <h5 class="mb-10 mt-30 fw-600 text-grey-4 wow fadeIn animated">{{__('Theo dõi chúng tôi')}}</h5>
                                 <div class="mobile-social-icon wow fadeIn animated mb-sm-5 mb-md-0">
-                                    <a href="#"><img src="assets/imgs/theme/icons/icon-facebook.svg" alt=""></a>
-                                    <a href="#"><img src="assets/imgs/theme/icons/icon-twitter.svg" alt=""></a>
-                                    <a href="#"><img src="assets/imgs/theme/icons/icon-instagram.svg" alt=""></a>
-                                    <a href="#"><img src="assets/imgs/theme/icons/icon-pinterest.svg" alt=""></a>
-                                    <a href="#"><img src="assets/imgs/theme/icons/icon-youtube.svg" alt=""></a>
+                                    <a href="#"><img src="{{asset('assets/imgs/theme/icons/icon-facebook.svg')}}" alt=""></a>
+                                    <a href="#"><img src="{{asset('assets/imgs/theme/icons/icon-twitter.svg')}}" alt=""></a>
+                                    <a href="#"><img src="{{asset('assets/imgs/theme/icons/icon-instagram.svg')}}" alt=""></a>
+                                    <a href="#"><img src="{{asset('assets/imgs/theme/icons/icon-pinterest.svg')}}" alt=""></a>
+                                    <a href="#"><img src="{{asset('assets/imgs/theme/icons/icon-youtube.svg')}}" alt=""></a>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-2 col-md-3">
-                            <h5 class="widget-title wow fadeIn animated">About</h5>
+                            <h5 class="widget-title wow fadeIn animated">{{__('Về chúng tôi')}}</h5>
                             <ul class="footer-list wow fadeIn animated mb-sm-5 mb-md-0">
-                                <li><a href="#">About Us</a></li>
-                                <li><a href="#">Delivery Information</a></li>
-                                <li><a href="#">Privacy Policy</a></li>
-                                <li><a href="#">Terms &amp; Conditions</a></li>
-                                <li><a href="#">Contact Us</a></li>                            
+                                {{-- <li><a href="#">About Us</a></li> --}}
+                                {{-- <li><a href="#">Delivery Information</a></li> --}}
+                                <li><a href="#">{{__('Chính sách bảo mật')}}</a></li>
+                                <li><a href="#">{{__('Các điểu khoản')}} &amp; {{__('Các điều kiện')}} </a></li>
+                                <li><a href="{{route('contact-us')}}">{{__('Liên hệ với chúng tôi')}} </a></li>                            
                             </ul>
                         </div>
                         <div class="col-lg-2  col-md-3">
-                            <h5 class="widget-title wow fadeIn animated">My Account</h5>
+                            <h5 class="widget-title wow fadeIn animated">{{__('Tài khoản của tôi')}} </h5>
                             <ul class="footer-list wow fadeIn animated">
-                                <li><a href="my-account.html">My Account</a></li>
-                                <li><a href="#">View Cart</a></li>
-                                <li><a href="#">My Wishlist</a></li>
-                                <li><a href="#">Track My Order</a></li>                            
-                                <li><a href="#">Order</a></li>
+                                    @if(Auth::check())
+                                         <li><a href="{{route('user.dashboard.edit',['user_id'=>Auth::user()->id])}}">My Account</a></li>   
+                                    @endif
+                                <li><a href="{{route('shop.cart')}}">{{__('Xem giỏ hàng ')}} </a></li>
+                                <li><a href="{{route('shop.wishlist')}}">{{__('Xem danh sách yêu thích')}} </a></li>
+                                <li><a href="{{route('user.order')}}">{{__('Theo dõi đơn hàng của tôi')}}  </a></li>                            
+                                <li><a href="{{route('user.order')}}">{{__('Quản lý các đơn hàng')}} </a></li>
                             </ul>
                         </div>
                         <div class="col-lg-4 mob-center">
-                            <h5 class="widget-title wow fadeIn animated">Install App</h5>
+                            {{-- <h5 class="widget-title wow fadeIn animated">Install App</h5> --}}
                             <div class="row">
                                 <div class="col-md-8 col-lg-12">
-                                    <p class="wow fadeIn animated">From App Store or Google Play</p>
+                                    {{-- <p class="wow fadeIn animated">From App Store or Google Play</p> --}}
                                     <div class="download-app wow fadeIn animated mob-app">
-                                        <a href="#" class="hover-up mb-sm-4 mb-lg-0"><img class="active" src="assets/imgs/theme/app-store.jpg" alt=""></a>
-                                        <a href="#" class="hover-up"><img src="assets/imgs/theme/google-play.jpg" alt=""></a>
+                                        <a href="#" class="hover-up mb-sm-4 mb-lg-0"><img class="active" src="{{asset('assets/imgs/logo/logosss.png')}}" alt=""></a>
+                                        {{-- <a href="#" class="hover-up"><img src="{{asset('assets/imgs/theme/google-play.jpg')}}" alt=""></a> --}}
                                     </div>
                                 </div>
-                                <div class="col-md-4 col-lg-12 mt-md-3 mt-lg-0">
+                                {{-- <div class="col-md-4 col-lg-12 mt-md-3 mt-lg-0">
                                     <p class="mb-20 wow fadeIn animated">Secured Payment Gateways</p>
-                                    <img class="wow fadeIn animated" src="assets/imgs/theme/payment-method.png" alt="">
-                                </div>
+                                    <img class="wow fadeIn animated" src="{{asset('assets/imgs/theme/payment-method.png')}}" alt="">
+                                </div> --}}
                             </div>
                         </div>
                     </div>
@@ -478,18 +438,21 @@
                     </div>
                     <div class="col-lg-6">
                         <p class="float-md-left font-sm text-muted mb-0">
-                            <a href="privacy-policy.html">Privacy Policy</a> | <a href="terms-conditions.html">Terms & Conditions</a>
+                            <a href="privacy-policy.html">{{__('Chính sách bảo mật')}}</a> | <a href="terms-conditions.html">{{__('Các điểu khoản')}} &amp; {{__('Các điều kiện')}}</a>
                         </p>
                     </div>
                     <div class="col-lg-6">
                         <p class="text-lg-end text-start font-sm text-muted mb-0">
-                            &copy; <strong class="text-brand">SurfsideMedia</strong> All rights reserved
+                            &copy; <strong class="text-brand">TM Fashion Store</strong> All rights reserved
                         </p>
                     </div>
                 </div>
             </div>
         </footer>    
         <!-- Vendor JS-->
+        <!-- MDB -->
+    <script type="text/javascript"src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.1/mdb.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script src="{{asset('assets/js/vendor/modernizr-3.6.0.min.js')}}"></script>
     <script src="{{asset('assets/js/vendor/jquery-3.6.0.min.js')}}"></script>
     <script src="{{asset('assets/js/vendor/jquery-migrate-3.3.0.min.js')}}"></script>
@@ -513,6 +476,7 @@
     <!-- Template  JS -->
     <script src="{{asset('assets/js/main.js?v=3.3')}}"></script>
     <script src="{{asset('assets/js/shop.js?v=3.3')}}"></script>
+
     @livewireScripts
     @stack('scripts')
     </body>

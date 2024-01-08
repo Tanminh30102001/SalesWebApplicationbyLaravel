@@ -3,7 +3,7 @@
     
         div.stars {
             
-        width: 170px;
+        width: 200px;
         display: inline-block;
         }
         

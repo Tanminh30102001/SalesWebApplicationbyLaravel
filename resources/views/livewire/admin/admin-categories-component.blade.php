@@ -41,6 +41,7 @@
                                             <th>Image</th>
                                             <th> Name</th>
                                             <th> Slug</th>
+                                            <th>Sub Categories</th>
                                             <th>Popular</th>
                                             <th> Action</th>
                                         </tr>
@@ -56,6 +57,15 @@
                                                 <td><img src="{{asset('assets/imgs/category')}}/{{$item->image}}" width='80px' height='70px'/></td>
                                                 <td> {{$item->name}}</td>
                                                 <td> {{$item->slug}}</td>
+                                                <td>
+                                                    <ul>
+                                                        @foreach($item->subCategories as $scategory)
+                                                        <li> {{$scategory->name}} <a href="{{route('admin.edit.category',['category_id'=>$item->id,'scategory_id'=>$scategory->id])}}">edit</a>
+                                                            <a href="#" onclick="deleteSubCate({{$scategory->id}})"  class="text-danger  ">Delete </a></li>
+                                                        @endforeach
+                                                        
+                                                    </ul>
+                                                </td>
                                                 <td>{{$item->is_popular == 1 ?'Yes':'NO'}}</td>
                                                 <td><a href="{{route('admin.edit.category',['category_id'=>$item->id])}}" class="text-success ">Edit </a>
                                                     <a href="#" onclick="deleteConfirmation({{$item->id}})"  class="text-danger  ">Delete </a>
@@ -89,7 +99,21 @@
         </div>
     </div>
 </div>
-
+<div class="modal" id="deleteSubCate">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body pb-30 pt-30">
+                <div class="row">
+                    <div class="col-md-12 text-center" >
+                        <h4 class="pb-3">Do you want Delete this subcategory</h4>
+                        <button type="button" class="btn btn-secondary" data-bs-modal="modal" data-bs-modal="#deleteConfirmation">Cancel</button>
+                        <button type="button" class="btn btn-danger"onclick="deleteSubCategory()" >delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 @push('scripts')
 <script>
     function deleteConfirmation(id){
@@ -99,6 +123,14 @@
     }
     function deleteCategory(){
         @this.call('deleteCategory');
+        $('#deleteConfirmation').modal('hide');
+    }
+    function deleteSubCate(id){
+        @this.set('subcategory_id',id);
+        $('#deleteSubCate').modal('show');
+    }
+    function deleteSubCategory(){
+        @this.call('deleteSubCategory');
         $('#deleteConfirmation').modal('hide');
     }
 </script>

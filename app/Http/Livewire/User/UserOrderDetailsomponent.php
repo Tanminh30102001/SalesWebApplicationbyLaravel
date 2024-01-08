@@ -32,9 +32,22 @@ class UserOrderDetailsomponent extends Component
             'reason_cancel'=>'required'
         ]);
         $order=Order::find($this->order_id);
+        // $orderItems = $order->orderItems;
+        $orderDetails = $order->orderDetails()->with('product')->get();
+        foreach ($orderDetails as $orderDetail) {
+            $product = $orderDetail->product;
+
+            // Đảm bảo sản phẩm tồn tại
+            if ($product) {
+                $product->quantity += $orderDetail->quantity;
+                $product->save();
+            }
+        }
         $order->status_delivery='canceled';
+
         $order->reason_cancel=$this->reason_cancel;
         $order->save();
+        
         $this->showForm=false;
         session()->flash('cancel_message','Đã hủy đơn hàng ');
     }

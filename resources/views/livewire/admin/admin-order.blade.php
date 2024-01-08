@@ -58,6 +58,7 @@
                                                 <td>{{$item->status== 1?'Payed':'Not Pay'}}</td>
                                                 <td>{{$item->status_delivery}}</td>
                                                 <td> ${{$item->total}}</td>
+                                                {{-- <td> {{$item->discount}}</td> --}}
                                                 <td><a href="{{route('admin.orderdetails',['order_id'=>$item->id])}}"> details</a></td>
                                                 <td><div class="dropdown">
                                                     <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">

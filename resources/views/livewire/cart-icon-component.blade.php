@@ -28,8 +28,8 @@
                 <h4>Total <span>${{Cart::instance('cart')->total()}}</span></h4>
             </div>
             <div class="shopping-cart-button">
-                <a href="{{route('shop.cart')}}" class="outline">View cart</a>
-                <a href="{{route('shop.checkout')}}">Checkout</a>
+                <a href="{{route('shop.cart')}}" class="outline">{{__('Xem giỏ hàng')}}</a>
+                <a href="{{route('shop.checkout')}}">{{_('Thanh toán')}}</a>
             </div>
         </div>
     </div>

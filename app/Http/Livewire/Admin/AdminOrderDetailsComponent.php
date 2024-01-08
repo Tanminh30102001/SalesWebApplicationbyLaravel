@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Livewire\Admin;
-
+use Cart;
 use App\Models\Order;
 use Livewire\Component;
 
